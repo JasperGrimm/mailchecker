@@ -1,0 +1,7 @@
+config.json
+*.pid
+log/*
+!log/.gitignore
+res/*
+!res/.gitignore
+node_modules/
