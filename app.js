@@ -3,23 +3,22 @@
  * Creare order and wait for order approve message
  * 
  */
-var path = require('path');
-var fs = require('fs');
-var childProcess = require('child_process')
-var slimerjs = require('slimerjs')
-var binPath = slimerjs.path
-var later = require('later');
-var Imap = require('imap'),
-    inspect = require('util').inspect;
-var moment = require('moment');
-var sendAlert = require('./lib/mailer');
-var mail_config = require('./config.json');
+var path = require('path'),
+    fs = require('fs'),
+    childProcess = require('child_process'),
+    slimerjs = require('slimerjs'),
+    binPath = slimerjs.path,
+    later = require('later'),
+    Imap = require('imap'),
+    inspect = require('util').inspect,
+    moment = require('moment'),
+    sendAlert = require('./lib/mailer'),
+    mail_config = require('./config.json');
 
-var mail_checker_schedule = null;
-var mail_checker_schedule_abort_controller = null;
-var childArgs = [path.join(__dirname, 'order-creator.js')];
-
-var STATE_OK = false;
+var mail_checker_schedule = null,
+    mail_checker_schedule_abort_controller = null,
+    childArgs = [path.join(__dirname, 'order-creator.js')],
+    STATE_OK = false;
 
 var log = function(msg) {
     fs.appendFile('log/info.log', "[" + moment().format('Y-M-D hh:mm:ss') + "] ~ " + msg + "\n");
@@ -114,6 +113,4 @@ var checkMail = function() {
 }
 
 
-var schedule = later.setInterval(createOrder, later.parse.text('every 1 hour'));
-createOrder();
-
+setInterval(createOrder, 3600 * 1000);
