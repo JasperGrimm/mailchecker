@@ -12,16 +12,8 @@ var later = require('later');
 var Imap = require('imap'),
     inspect = require('util').inspect;
 var moment = require('moment');
-var email   = require("emailjs");
-
+var sendAlert = require('./lib/mailer');
 var mail_config = require('./config.json');
-
-var mailer  = email.server.connect({
-   user:        mail_config.user, 
-   password:    mail_config.password, 
-   host:        mail_config.smtp, 
-   ssl:         mail_config.ssl
-});
 
 var mail_checker_schedule = null;
 var mail_checker_schedule_abort_controller = null;
@@ -47,16 +39,6 @@ var createOrder = function() {
             sendAlert();
         }
     }, later.parse.text('every 20 minute'));
-}
-
-var sendAlert = function() {
-    // send the message and get a callback with an error or details of the message that was sent
-    mailer.send({
-        text:    "В течение получаса письмо-подтверждение не пришло на тестовый ящик!", 
-        from:    "Mailchecker Questoria <" + mail_config.user + ">", 
-        to:      "Questoria Admin <admin@questoria.ru>",
-        subject: "Почта не приходит больше, чем 30 минут!"
-    }, function(err, message) { console.log(err || message); });
 }
 
 var checkMail = function() {    
