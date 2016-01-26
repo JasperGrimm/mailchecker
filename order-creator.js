@@ -21,9 +21,9 @@ webpage
     webpage.evaluate(function() {
         document.querySelector('input#name').value = "Евгений Ольшевский";
         document.querySelector('input#email').value = "mailchecker.questoria@gmail.com";
-        document.querySelector('input#phone').value = "79780251160"
+        document.querySelector('input#phone').value = "7978" + (Math.random() * 100).toString().replace('.', '').substr(0, 7)
         document.querySelector('[name=info]').value = "Info";
-        // document.querySelector('[name=submit]').click();
+        document.querySelector('[name=submit]').click();
     });
     slimer.wait(1000);
     slimer.exit();
