@@ -4,7 +4,7 @@ webpage.onConsoleMessage = function (msg) {
     console.log(msg);
 };
 
-var base = 'http://test.questoria.ru';
+var base = 'http://barad-dur.test.questoria.ru';
 
 webpage
   .open(base + '/расписание-живых-квестов')
