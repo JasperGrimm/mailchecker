@@ -6,7 +6,7 @@ webpage.onConsoleMessage = function (msg) {
 
 webpage.settings.userAgent = 'QuestoriaMailChecker';
 
-var base = 'http://barad-dur.test.questoria.ru';
+var base = 'http://barad-dur.questoria.ru';
 
 webpage
   .open(base + '/расписание-живых-квестов')

@@ -113,4 +113,4 @@ var checkMail = function() {
 }
 
 
-setInterval(createOrder, 3600 * 1000);
+setInterval(createOrder, 7200 * 1000);
