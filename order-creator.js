@@ -4,6 +4,8 @@ webpage.onConsoleMessage = function (msg) {
     console.log(msg);
 };
 
+webpage.settings.userAgent = 'QuestoriaMailChecker';
+
 var base = 'http://barad-dur.test.questoria.ru';
 
 webpage
